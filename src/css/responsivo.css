@@ -1,0 +1,61 @@
+@media (max-width: 1200px) {
+    .container .parte1 {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .container .logo2 {
+        max-width: 50%;
+    }
+
+    .container .tPrincipal {
+        max-width: 50%;
+    }
+
+    .container .informacoes {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .container .descricao1 .b1 {
+        max-width: 50%;
+    }
+    .container .descricao1 .b2 {
+        max-width: 50%;
+    }
+
+    .container .descricao2 {
+        text-align: center;
+    }
+
+  
+
+    .topicos {
+        flex-wrap: wrap;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .cabecalho {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+     .blog {
+        max-width: 75%;
+    }
+
+    .container .descricao1 .b1 {
+        max-width: 50%;
+    }
+    .container .descricao1 .b2 {
+        max-width: 50%;
+    }
+
+    .container .descricao2 {
+        text-align: center;
+    }
+}
