@@ -1,8 +1,8 @@
 const wrapper = document.querySelector(".wrapper");
 const carrossel = document.querySelector(".carrossel");
 const arrowBtns = document.querySelectorAll(".wrapper i");
-const firstCardWidth = carrossel.querySelector(".card").offsetWidth;
-const carrosselChildrens = [...carrossel.children];
+const firstCardWidth = carrossel?.querySelector(".card").offsetWidth;
+const carrosselChildrens = [...carrossel?.children];
 
 let isDragging = false, startX, startScrollLeft, timeoutId;
 
@@ -156,4 +156,31 @@ function cadastraUsuario() {
  
 
 
+function cadastraUsuarioPrestadorServico() {
+    
+}
+
+function cadastraUsuarioCliente() {
+    cadastraUsuario('CLIENTE')
+}
+
+function cadastraUsuario(tipoUsuario) {
+    event.preventDefault()
+    let url = "https://the-help-api-824b4d905b15.herokuapp.com/thehelp/auth/criar-usuario"
+    let nome = document.getElementById("nome").value
+    let email = document.getElementById("email").value
+    let telefone = document.getElementById("telefone").value
+    console.log(nome)
+    console.log(email)
+    console.log(telefone)
+
+    body = {
+        "nome": nome,
+        "email": email,
+        "tipo": tipoUsuario,
+        "telefone": telefone
+    }
+
+    fazPost(url, body)
+}
 
