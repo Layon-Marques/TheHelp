@@ -135,28 +135,8 @@ function fazPost(url, body) {
     return request.responseText
 }
 
-function cadastraUsuario() {
-    event.preventDefault()
-    let url = "https://the-help-api-824b4d905b15.herokuapp.com/thehelp/auth/criar-usuario"
-    let nome = document.getElementById("nome").value
-    let email = document.getElementById("email").value
-    console.log(nome)
-    console.log(email)
-
-    body = {
-        "nome": nome,
-        "email": email,
-        "tipo": "CLIENTE"
-    }
-
-    fazPost(url, body)
-}
-
-
- 
-
-
 function cadastraUsuarioPrestadorServico() {
+    cadastraUsuario('PROFISSIONAL_PARCEIRO')
     
 }
 
@@ -170,15 +150,35 @@ function cadastraUsuario(tipoUsuario) {
     let nome = document.getElementById("nome").value
     let email = document.getElementById("email").value
     let telefone = document.getElementById("telefone").value
+
     console.log(nome)
     console.log(email)
     console.log(telefone)
+    
+    //TODO: REFATORAR ISSO FUTURAMENTE, FEITO DESSE MODO POR CAUSA DA PRESSA
+    if (tipoUsuario === 'PROFISSIONAL_PARCEIRO') {
+        let servico = document.querySelector("#servicos").value
 
-    body = {
-        "nome": nome,
-        "email": email,
-        "tipo": tipoUsuario,
-        "telefone": telefone
+        let servicos = [servico]
+
+        body = {
+            "nome": nome,
+            "email": email,
+            "tipo": tipoUsuario,
+            "preferencia": {
+                "descricao": null, // AQUI É A DESCRIÇÃO PRA PREENCHER, 
+                                   // CASO TENHA O VALOR OUTROS COMO SERVIÇO SELECIONADO (USAR 255 CARACTERES)
+                                   // SUBSTITUI O NULL PELO VALOR DO ELEMENTO
+                "idsTipoServico": servicos
+            }
+        }
+    } else {
+        body = {
+            "nome": nome,
+            "email": email,
+            "tipo": tipoUsuario,
+            "telefone": telefone
+        }
     }
 
     fazPost(url, body)
