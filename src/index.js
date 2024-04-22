@@ -149,11 +149,11 @@ function cadastraUsuario(tipoUsuario) {
     let url = "https://the-help-api-824b4d905b15.herokuapp.com/thehelp/auth/criar-usuario"
     let nomeProfissionalParceiro = document.getElementById("nomeProfissionalParceiro").value
     let emailProfissionalParceiro = document.getElementById("emailProfissionalParceiro").value
-    let telefoneCliente = document.getElementById("telefoneCliente").value
 
     let nomeCliente = document.getElementById("nomeCliente").value
     let emailCliente = document.getElementById("emailCliente").value
-    
+    let telefoneCliente = document.getElementById("telefoneCliente").value
+
     //TODO: REFATORAR ISSO FUTURAMENTE, FEITO DESSE MODO POR CAUSA DA PRESSA
     if (tipoUsuario === 'PROFISSIONAL_PARCEIRO') {
         let servicoProfissionalParceiro = document.querySelector("#servicosProfissionalParceiro").value
