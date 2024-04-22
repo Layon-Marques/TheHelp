@@ -147,23 +147,22 @@ function cadastraUsuarioCliente() {
 function cadastraUsuario(tipoUsuario) {
     event.preventDefault()
     let url = "https://the-help-api-824b4d905b15.herokuapp.com/thehelp/auth/criar-usuario"
-    let nome = document.getElementById("nome").value
-    let email = document.getElementById("email").value
-    let telefone = document.getElementById("telefone").value
+    let nomeProfissionalParceiro = document.getElementById("nomeProfissionalParceiro").value
+    let emailProfissionalParceiro = document.getElementById("emailProfissionalParceiro").value
+    let telefoneCliente = document.getElementById("telefoneCliente").value
 
-    console.log(nome)
-    console.log(email)
-    console.log(telefone)
+    let nomeCliente = document.getElementById("nomeCliente").value
+    let emailCliente = document.getElementById("emailCliente").value
     
     //TODO: REFATORAR ISSO FUTURAMENTE, FEITO DESSE MODO POR CAUSA DA PRESSA
     if (tipoUsuario === 'PROFISSIONAL_PARCEIRO') {
-        let servico = document.querySelector("#servicos").value
+        let servicoProfissionalParceiro = document.querySelector("#servicosProfissionalParceiro").value
 
-        let servicos = [servico]
+        let servicos = [servicoProfissionalParceiro]
 
         body = {
-            "nome": nome,
-            "email": email,
+            "nome": nomeProfissionalParceiro,
+            "email": emailProfissionalParceiro,
             "tipo": tipoUsuario,
             "preferencia": {
                 "descricao": null, // AQUI É A DESCRIÇÃO PRA PREENCHER, 
@@ -174,10 +173,10 @@ function cadastraUsuario(tipoUsuario) {
         }
     } else {
         body = {
-            "nome": nome,
-            "email": email,
+            "nome": nomeCliente,
+            "email": emailCliente,
             "tipo": tipoUsuario,
-            "telefone": telefone
+            "telefone": telefoneCliente
         }
     }
 
