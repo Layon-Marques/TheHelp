@@ -143,15 +143,19 @@
                             <form onsubmit="cadastraUsuarioPrestadorServico()">
                                 <input required type="text" name="nome" id="nomeProfissionalParceiro" placeholder ="Digite seu nome completo">
                                 <input required type="text" name="email" id="emailProfissionalParceiro" placeholder ="Digite seu email">
+                                <input required type="text" name="telefone" id="telefoneProfissionalParceiro" placeholder ="Digite seu telefone">
 
                                 <label class="labelSelect" for="">Quais tipos de serviços você oferece?</label>
-                                 <select class="selectServicos" name="Serviços" id="servicosProfissionalParceiro">
+                                 <select class="selectServicos" name="Serviços" id="servicosProfissionalParceiro" onchange="exibirDescricaoOutros()">
                                    <option value="">Selecione um serviço</option>
                                    <option value="5" id="servico1">Instalação e manutenção de Ar Condicionado</option>
                                    <option value="8" id="servico2">Serviços Elétricos</option>
                                    <option value="9" id="servico3">Mestre de Obras</option>
                                    <option value="10" id="servico4">Outros</option>
                                  </select>
+
+                                 <input required type="text" name="descricaoServicoOutros" id="descricaoServicoOutros" 
+                                   placeholder ="Descreva o serviço">
 
                                 <button class="botao-formulario">Enviar</button>
                             </form>

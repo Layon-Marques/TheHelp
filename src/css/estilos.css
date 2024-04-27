@@ -571,13 +571,13 @@ footer .logofooter {
 }
 
 
- .formulario-modal {
+.formulario-modal {
     background-color: #F58634;
     display: block;
     text-align: center;
     justify-content: center;
     width: 640px;
-    height: 270px;
+    height: 340px;
     margin-top: 15px;
     border-radius: 8px;
 } 

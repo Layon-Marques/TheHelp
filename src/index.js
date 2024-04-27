@@ -4,6 +4,10 @@ const arrowBtns = document.querySelectorAll(".wrapper i");
 const firstCardWidth = carrossel?.querySelector(".card").offsetWidth;
 const carrosselChildrens = [...carrossel?.children];
 
+
+descricaoServicoOutros.style.display = "none";
+descricaoServicoOutros.removeAttribute("required");
+
 let isDragging = false, startX, startScrollLeft, timeoutId;
 
 let cardPerView = Math.round(carrossel.offsetWidth / firstCardWidth);
@@ -90,9 +94,6 @@ botaoFecharModal.addEventListener("click", () => {
 });
 
 
-
-
-
 const botaoFormularioCliente = document.querySelector(".bntOpen2");
 
 const modal2 = document.querySelector(".modal2");
@@ -108,14 +109,28 @@ botaoFecharModal2.addEventListener("click", () => {
     modal2.classList.remove("aberto2");
 });
 
-
-
-
 const confirmarCadastro = document.querySelector(".botao-formulario");
 
 confirmarCadastro.addEventListener("click", () => {
     alert("Cadastro Feito com sucesso!");
 })
+
+function exibirDescricaoOutros() {
+    let descricaoServicoOutros = document.getElementById("descricaoServicoOutros");
+    let servicosProfissionalParceiro = document.querySelector("#servicosProfissionalParceiro");
+    let modal = document.getElementsByClassName("formulario-modal")[0];
+
+    if (servicosProfissionalParceiro.value === "10") {
+        descricaoServicoOutros.style.display = "block";
+        descricaoServicoOutros.style.marginLeft = "15px";
+        descricaoServicoOutros.setAttribute("required", "true");
+        modal.style.height = "450px";
+    } else {
+        descricaoServicoOutros.style.display = "none";
+        descricaoServicoOutros.removeAttribute("required");
+        modal.style.height = "340px";
+    }
+}
 
 
 // BANCO DE DADOS
@@ -149,6 +164,8 @@ function cadastraUsuario(tipoUsuario) {
     let url = "https://the-help-api-824b4d905b15.herokuapp.com/thehelp/auth/criar-usuario"
     let nomeProfissionalParceiro = document.getElementById("nomeProfissionalParceiro").value
     let emailProfissionalParceiro = document.getElementById("emailProfissionalParceiro").value
+    let telefoneProfissionalParceiro = document.getElementById("telefoneProfissionalParceiro").value
+    let descricaoServicoOutros = document.getElementById("descricaoServicoOutros").value;
 
     let nomeCliente = document.getElementById("nomeCliente").value
     let emailCliente = document.getElementById("emailCliente").value
@@ -157,17 +174,15 @@ function cadastraUsuario(tipoUsuario) {
     //TODO: REFATORAR ISSO FUTURAMENTE, FEITO DESSE MODO POR CAUSA DA PRESSA
     if (tipoUsuario === 'PROFISSIONAL_PARCEIRO') {
         let servicoProfissionalParceiro = document.querySelector("#servicosProfissionalParceiro").value
-
         let servicos = [servicoProfissionalParceiro]
 
         body = {
             "nome": nomeProfissionalParceiro,
             "email": emailProfissionalParceiro,
+            "telefone": telefoneProfissionalParceiro,
             "tipo": tipoUsuario,
             "preferencia": {
-                "descricao": null, // AQUI É A DESCRIÇÃO PRA PREENCHER, 
-                                   // CASO TENHA O VALOR OUTROS COMO SERVIÇO SELECIONADO (USAR 255 CARACTERES)
-                                   // SUBSTITUI O NULL PELO VALOR DO ELEMENTO
+                "descricao": descricaoServicoOutros,
                 "idsTipoServico": servicos
             }
         }
